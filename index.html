@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT Onboarding Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>IT Onboarding Dashboard</h1>
+        <p>Track and manage IT requests seamlessly</p>
+        <div class="nav-buttons">
+            <button class="nav-button active" data-section="new" onclick="showSection('new')">New Request</button>
+            <button class="nav-button" data-section="approval" onclick="showSection('approval')">IT Approval <span id="approvalBadge" class="badge"></span></button>
+            <button class="nav-button" data-section="history" onclick="showSection('history')">Request History</button>
+        </div>
+
+        <section id="new" class="section active">
+            <h2>Submit IT Request</h2>
+            <form id="requestForm">
+                <div class="form-row">
+                    <input name="employee" placeholder="Employee Name" required />
+                    <select name="department" required>
+                        <option value="" disabled selected>Select Department</option>
+                        <option value="Finance">Finance</option>
+                        <option value="HR">HR</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Logistics">Logistics</option>
+                        <option value="Operations">Operations</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Legal">Legal</option>
+                    </select>
+                    <input name="position" placeholder="Position" required />
+                </div>
+                <div class="form-row">
+                    <input name="joinDate" type="date" required />
+                    <input name="email" type="email" placeholder="HR Email" required />
+                </div>
+                <fieldset>
+                    <legend>Request Items</legend>
+                    <label><input type="checkbox" name="items" value="Email" /> Email</label>
+                    <label><input type="checkbox" name="items" value="Laptop" /> Laptop</label>
+                    <label><input type="checkbox" name="items" value="Desktop" /> Desktop</label>
+                    <label><input type="checkbox" name="items" value="SAP" /> SAP</label>
+                    <label><input type="checkbox" name="items" value="TALO" /> SAP</label>
+                    <label><input type="checkbox" name="items" value="Windows Account" /> SAP</label>
+                    <label><input type="checkbox" name="items" value="SAP" /> VPN</label>
+                </fieldset>
+                <button type="submit">Submit Request</button>
+            </form>
+        </section>
+
+        <section id="approval" class="section">
+            <h2>IT Approval</h2>
+            <table>
+                <thead><tr><th>Employee</th><th>Department</th><th>Items</th><th>Email</th><th>Actions</th></tr></thead>
+                <tbody id="approvalTableBody"></tbody>
+            </table>
+            <p id="emptyApproval">No pending approvals</p>
+        </section>
+
+        <section id="history" class="section">
+            <h2>Request History</h2>
+            <table>
+                <thead><tr><th>Employee</th><th>Items</th><th>IT Status</th><th>Date</th><th>Action</th></tr></thead>
+                <tbody id="historyTableBody"></tbody>
+            </table>
+            <p id="emptyHistory">No requests yet</p>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
